@@ -14,4 +14,3 @@ const insertionSort = (array) => {
   
   const array = [5, 7, 8, 89, 45, 1, 6, 3];
   console.log(insertionSort(array));
-  
