@@ -1,4 +1,5 @@
 const bubbleSort = (array) => {
+    if (arr.length <= 1) return arr;
     let last = array.length - 1;
     
     for (let i = 0; i < last; i++) { 
