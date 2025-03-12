@@ -34,3 +34,11 @@ console.log(reg4.test(str4));
 const str5='&jhjh-example_456@gmail.com90u87 njkhk.example_456@nbm.ru8jhk@j_knkj0978 njivtyf7656';
 const reg5=/[a-z0-9_]+@[a-z0-9_\.]+\.[a-z]{2,12}/g
 console.log(str5.match(reg5));
+
+const str6='#FF00FF@ jkh $#000000 jkbv_ gfgh-#87jkhh l#ffaa889 ';
+const reg6=/#[a-f0-9]{6}/ig
+console.log(str6.match(reg6));
+
+const str7='knkj677.98,88nhb h02/03/25bhh_bjh765/89/09jhbjh 09.12.24 '
+const reg7 = /(0[1-9]|[12][0-9]|3[01])[\.|\/](0[1-9]|1[0-2])[\.|\/](\d{2})/g;
+console.log(str7.match(reg7));
