@@ -1,8 +1,8 @@
-import { mockServers } from "./mock-server.js";
+import { mockServers, clients } from "./mock-server.js"; 
 
 function weightedRoundRobin(servers) {
   if (!servers || servers.length === 0) {
-    return null; 
+    return null;
   }
 
   let totalWeight = servers.reduce((sum, server) => sum + server.weight, 0);
@@ -16,8 +16,29 @@ function weightedRoundRobin(servers) {
     }
   }
 
-  return null; 
+  return null;
 }
 
-console.log(weightedRoundRobin(mockServers));
+function handleClientRequest(client) {
+  const selectedServer = weightedRoundRobin(mockServers);
+
+  if (selectedServer) {
+    selectedServer.currentRequests++;
+    console.log(`Client ${client} connect to ${selectedServer.name} (weight: ${selectedServer.weight})`);
+
+    setTimeout(() => {
+      selectedServer.currentRequests--;
+      console.log(`Client ${client} disconnect ${selectedServer.name}`);
+    }, Math.random() * 3000 + 2000);
+
+  } else {
+    console.log(`Client ${client} cannot connect, no servers available.`);
+  }
+}
+
+clients.forEach((client, index) => {
+  setTimeout(() => handleClientRequest(client), index * 500);
+});
+
+weightedRoundRobin(mockServers);
 

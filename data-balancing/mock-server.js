@@ -9,7 +9,7 @@ function createMockServer(name, weight = 1) {
     priority: Math.floor(Math.random() * 10),
     cpuUsage: Math.floor(Math.random() * 100), 
     ramUsage: Math.floor(Math.random() * 100), 
-    maxRequests: Math.floor(Math.random() * 10) + 5, 
+    maxRequests: Math.floor(Math.random() * 10) + 2, 
     currentRequests: 0,
     lastUsed: new Date(Date.now() - Math.floor(Math.random() * 1000000000)), 
   };
@@ -22,3 +22,6 @@ export const mockServers = [
   createMockServer("Server-4", 5),
   createMockServer("Server-5", 3),
 ];
+
+export const clients =[1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+export const domains = ["example.com", "api.example.com", "static.example.com"];

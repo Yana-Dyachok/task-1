@@ -1,16 +1,17 @@
 import { mockServers, clients } from "./mock-server.js";
 
-function priorityBasedLD (servers, clients) {
+function slowestResponseTime(servers, clients) {
     if (!servers || servers.length === 0) {
         return null; 
       }
+    
       clients.forEach((client, index) => {
-        setTimeout(() => handleRequest(client, servers), index * 500);
-    });
-}
+          setTimeout(() => handleRequest(client, servers), index * 500);
+      });
+  }
 
-function getServer(servers) {
-    return servers.sort((a, b) => b.priority - a.priority)[0]; 
+  function getServer(servers) {
+    return servers.sort((a, b) => b.responseTime - a.responseTime)[0];
   }
 
   function handleRequest(client, servers) {
@@ -23,4 +24,7 @@ function getServer(servers) {
   }
 
 
-priorityBasedLD(mockServers, clients);
+slowestResponseTime(mockServers, clients);
+
+
+ 
