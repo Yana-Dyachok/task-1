@@ -25,7 +25,7 @@ const merge = (array, left, mid, right) => {
 };
 
 const timSort = (array) => {
-  const RUN = 32;
+  const RUN = 16;
   let n = array.length;
 
   for (let i = 0; i < n; i += RUN) {
@@ -43,5 +43,5 @@ const timSort = (array) => {
   return array;
 };
 
-const array = [5, 7, 8, 89, 45, 1, 6, 3];
+const array = [5, 7, 8, 89, 45, 1, 6, 3, 13, 2,  4, 10,  12, 15, 18, 19, 21,  24,  30,  36, 39, 40, 87, 23, 42, 48, 135, 267, 270, 534, 14, 16, 90, 178];
 console.log(timSort(array));

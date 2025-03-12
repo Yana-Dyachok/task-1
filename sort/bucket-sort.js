@@ -11,11 +11,12 @@ const insertionSort = (array) => {
   return array;
 };
 
-const bucketSort = (array, bucketSize = array.length) => {
+const bucketSort = (array) => {
     if (array.length === 0) return array;
 
     let min = Math.min(...array);
     let max = Math.max(...array);
+    let bucketSize = Math.ceil(Math.sqrt(array.length)); 
 
     let bucketCount = Math.floor((max - min) / bucketSize) + 1;
     let buckets = Array.from({ length: bucketCount }, () => []);
