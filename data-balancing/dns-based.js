@@ -1,6 +1,9 @@
 import { mockServers, clients, domains } from "./mock-server.js"; 
 
 function dnsBasedLoadBalancing(servers, clients, domains) {
+  if (!servers || servers.length === 0) {
+    return null;
+  }
     clients.forEach((client, index) => {
         const domain = domains[index % domains.length]; 
         setTimeout(() => handleClientRequest(client, domain, servers), index * 500);
