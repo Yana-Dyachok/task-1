@@ -10,19 +10,14 @@ const insertionSort = (array, left, right) => {
   }
 };
 
-const merge = (array, left, mid, right) => {
-  let leftArr = array.slice(left, mid + 1);
-  let rightArr = array.slice(mid + 1, right + 1);
-  let i = 0, j = 0, k = left;
-
-  while (i < leftArr.length && j < rightArr.length) {
-    if (leftArr[i] <= rightArr[j]) array[k++] = leftArr[i++];
-    else array[k++] = rightArr[j++];
+const merge=(left, right)=>{
+  let res=[];
+  while(left.length&&right.length) {
+      if(left[0]<right[0]) res.push(left.shift());
+      else {res.push(right.shift())}
   }
-
-  while (i < leftArr.length) array[k++] = leftArr[i++];
-  while (j < rightArr.length) array[k++] = rightArr[j++];
-};
+return res.concat(left,right)
+}
 
 const timSort = (array) => {
   const RUN = 16;
@@ -36,7 +31,10 @@ const timSort = (array) => {
     for (let left = 0; left < n; left += 2 * size) {
       let mid = left + size - 1;
       let right = Math.min(left + 2 * size - 1, n - 1);
-      if (mid < right) merge(array, left, mid, right);
+      if (mid < right) {
+        let leftArr = array.slice(left, mid + 1);
+        let rightArr = array.slice(mid + 1, right + 1);
+        merge(leftArr, rightArr);}
     }
   }
 
